@@ -12,30 +12,34 @@
     <form id="smoothieForm">
       <label for="flavor">Choose a flavor:</label>
       <select id="flavor" name="flavor">
-        <option value="strawberry">Strawberry</option>
-        <option value="banana">Banana</option>
-        <option value="mango">Mango</option>
-        <option value="pineapple">Pineapple</option>
+        <option value="strawberry" data-price="3">Strawberry - $3</option>
+        <option value="banana" data-price="2.5">Banana - $2.5</option>
+        <option value="mango" data-price="3.5">Mango - $3.5</option>
+        <option value="pineapple" data-price="4">Pineapple - $4</option>
       </select><br><br>
       
       <label for="base">Choose a base:</label>
       <select id="base" name="base">
-        <option value="yogurt">Yogurt</option>
-        <option value="milk">Milk</option>
-        <option value="coconut water">Coconut Water</option>
+        <option value="yogurt" data-price="1">Yogurt - $1</option>
+        <option value="milk" data-price="1">Milk - $1</option>
+        <option value="coconut water" data-price="1.5">Coconut Water - $1.5</option>
       </select><br><br>
       
       <label for="toppings">Choose toppings (select multiple):</label>
       <select id="toppings" name="toppings" multiple>
-        <option value="spinach">Spinach</option>
-        <option value="kale">Kale</option>
-        <option value="protein powder">Protein Powder</option>
-        <option value="chia seeds">Chia Seeds</option>
+        <option value="spinach" data-price="0.5">Spinach - $0.5</option>
+        <option value="kale" data-price="0.5">Kale - $0.5</option>
+        <option value="protein powder" data-price="1">Protein Powder - $1</option>
+        <option value="chia seeds" data-price="1">Chia Seeds - $1</option>
       </select><br><br>
 
       <button type="button" onclick="createSmoothie()">Order</button>
     </form>
-    <div id="smoothieOutput"></div>
+    <div id="smoothieOutput">
+      <h2>Your Smoothie Options:</h2>
+      <div id="smoothieImage"></div>
+      <div id="bill"></div>
+    </div>
   </div>
 
   <script src="JS/script.js"></script>
