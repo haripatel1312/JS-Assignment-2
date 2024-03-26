@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smoothie Order</title>
+  <link rel="stylesheet" href="Styles/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Smoothie Order</h1>
+    <form id="smoothieForm">
+      <label for="flavor">Choose a flavor:</label>
+      <select id="flavor" name="flavor">
+        <option value="strawberry">Strawberry</option>
+        <option value="banana">Banana</option>
+        <option value="mango">Mango</option>
+        <option value="pineapple">Pineapple</option>
+      </select><br><br>
+      
+      <label for="base">Choose a base:</label>
+      <select id="base" name="base">
+        <option value="yogurt">Yogurt</option>
+        <option value="milk">Milk</option>
+        <option value="coconut water">Coconut Water</option>
+      </select><br><br>
+      
+      <label for="toppings">Choose toppings (select multiple):</label>
+      <select id="toppings" name="toppings" multiple>
+        <option value="spinach">Spinach</option>
+        <option value="kale">Kale</option>
+        <option value="protein powder">Protein Powder</option>
+        <option value="chia seeds">Chia Seeds</option>
+      </select><br><br>
+
+      <button type="button" onclick="createSmoothie()">Order</button>
+    </form>
+    <div id="smoothieOutput"></div>
+  </div>
+
+  <script src="JS/script.js"></script>
+</body>
+</html>
