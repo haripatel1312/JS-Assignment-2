@@ -2,7 +2,6 @@ function createSmoothie() {
     const flavor = document.getElementById("flavor").value;
     const base = document.getElementById("base").value;
     const toppings = [...document.getElementById("toppings").selectedOptions].map(option => option.value);
-  
     const smoothie = new Smoothie(flavor, base, toppings);
     displaySmoothie(smoothie);
   }
@@ -13,17 +12,25 @@ function createSmoothie() {
       this.base = base;
       this.toppings = toppings;
     }
-  
     calculatePrice() {
-      let totalPrice = parseFloat(document.querySelector(`#flavor option[value='${this.flavor}']`).getAttribute('data-price'));
-      totalPrice += parseFloat(document.querySelector(`#base option[value='${this.base}']`).getAttribute('data-price'));
-      this.toppings.forEach(topping => {
-        totalPrice += parseFloat(document.querySelector(`#toppings option[value='${topping}']`).getAttribute('data-price'));
-      });
-      return totalPrice.toFixed(2);
-    }
+        let totalPrice = 0;
+        const flavorOption = document.querySelector(`#flavor option[value='${this.flavor}']`);
+        const baseOption = document.querySelector(`#base option[value='${this.base}']`);
+        const toppingsOptions = this.toppings.map(topping => document.querySelector(`#toppings option[value='${topping}']`));
+      
+        if (flavorOption && baseOption && toppingsOptions.every(option => option)) {
+          totalPrice += parseFloat(flavorOption.getAttribute('data-price')) || 0;
+          totalPrice += parseFloat(baseOption.getAttribute('data-price')) || 0;
+          toppingsOptions.forEach(option => {
+            totalPrice += parseFloat(option.getAttribute('data-price')) || 0;
+          });
+        } else {
+          console.error("Error: Some HTML elements not found or null values in smoothie properties.");
+        }
+        return totalPrice.toFixed(2);
+      }
+      
   }
-  
   function displaySmoothie(smoothie) {
     const smoothieOutput = document.getElementById("smoothieOutput");
     smoothieOutput.innerHTML = `
@@ -39,7 +46,7 @@ function createSmoothie() {
       <p>Total Price: $${price}</p>
     `;
     const smoothieImage = document.getElementById("smoothieImage");
-    smoothieImage.innerHTML = `<img src="Images/image.webp" alt="Smoothie" width="200">`; // Replace smoothie_image.jpg with your image
+    smoothieImage.innerHTML = `<img src="Images/image.webp" alt="Smoothie" width="200">`; 
 }
 
 
